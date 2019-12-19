@@ -1,0 +1,19 @@
+body {
+    background-color: plum;
+}
+
+h3 {
+    text-align: center;
+}
+
+div {
+    background-color: plum;
+    color: darkslateblue;
+    text-align: center;
+}
+
+p {
+    background-color: plum;
+    text-align: center;
+    color: indigo;
+}

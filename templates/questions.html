@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			input{width: 100%}
+			input.radio{width: 10%}
+			input.submit{width: 20%}
+			select{width: 100%}
+			ul{list-style-type: none}
+		</style>
+		<link href="../static/style1.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h2>Мне просто нужна помощь...</h2>
+		<form class="container" action="/process">
+			<h3>Немного о вас:</h3>
+			<div class="row">
+				<div class="col-md-4">Имя</div>
+				<div class="col-md-4"><input type="text" name="name" required pattern='[A-Za-zА-Яа-яЁё]+'></div>
+			</div>
+        	<div class="row">
+				<div class="col-md-4">Фамилия</div>
+				<div class="col-md-4"><input type="text" name="surname"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Возраст</div>
+				<div class="col-md-4"><input type="number" name="age"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Город проживания</div>
+				<div class="col-md-4"><input type="text" name="town" required pattern='[A-Za-zА-Яа-яЁё]+'></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Гендер</div>
+				<select name="gender" class="col-md-4">
+					<option value="male">м</option>
+					<option value="female">ж</option>
+					<option value="other">другой</option>
+				</select>
+			</div>
+			<h3>Немного вопросов:</h3>
+			<h5>Оцените немного предложений по шкале от 1 до 3. 1 - "Никогда бы так не сказал", а 3 - "Мог бы так сказать".</h5>
+            {% for question in questions %}
+			    <div class="row">
+				    <p class="col-md-6">{{question.text}}</p>
+					<table class="col-md-8">
+						<tr>
+							<td><input class="radio" type="radio" name="q{{ question.id }}" value=3></td>
+							<td><input class="radio" type="radio" name="q{{ question.id }}" value=2></td>
+							<td><input class="radio" type="radio" name="q{{ question.id }}" value=1></td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+						</tr>
+					</table>
+			    </div>
+            {% endfor %}
+			<div class="row">
+				<input class="submit" type="submit" name="submit" value="Отправить">
+			</div>
+		</form>
+	<p><a href='/stats'>Статистика</a></p>
+	</body>
+</html>
